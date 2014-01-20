@@ -1,0 +1,29 @@
+<h1>Listing chapers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chapers.each do |chaper| %>
+      <tr>
+        <td><%= chaper.title %></td>
+        <td><%= chaper.description %></td>
+        <td><%= link_to 'Show', chaper %></td>
+        <td><%= link_to 'Edit', edit_chaper_path(chaper) %></td>
+        <td><%= link_to 'Destroy', chaper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chaper', new_chaper_path %>

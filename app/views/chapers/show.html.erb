@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @chaper.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @chaper.description %>
+</p>
+
+<%= link_to 'Edit', edit_chaper_path(@chaper) %> |
+<%= link_to 'Back', chapers_path %>
