@@ -1,6 +1,6 @@
 class ChapersController < ApplicationController
   before_action :set_chaper, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /chapers
   # GET /chapers.json
   def index
