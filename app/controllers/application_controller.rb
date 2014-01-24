@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
    def has_role?(current_user, role)
-    return !!current_user.roles.find_by_name(role.to_s.camelize)
+    return !!current_user.roles.find_by_name(role.to_s)
   end
 
   rescue_from CanCan::AccessDenied do |exception|

@@ -1,2 +1,3 @@
 class Chaper < ActiveRecord::Base
+	belongs_to :user
 end

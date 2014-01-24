@@ -1,6 +1,6 @@
 class ChapersController < ApplicationController
   before_action :set_chaper, only: [:show, :edit, :update, :destroy]
-  
+  load_and_authorize_resource
   # GET /chapers
   # GET /chapers.json
   def index
@@ -25,7 +25,7 @@ class ChapersController < ApplicationController
   # POST /chapers.json
   def create
     @chaper = Chaper.new(chaper_params)
-
+ 
     respond_to do |format|
       if @chaper.save
         format.html { redirect_to @chaper, notice: 'Chaper was successfully created.' }
@@ -69,6 +69,6 @@ class ChapersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chaper_params
-      params.require(:chaper).permit(:title, :description)
+      params.require(:chaper).permit(:title, :description, :user_id)
     end
 end
