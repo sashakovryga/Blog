@@ -2,18 +2,20 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
-
+gem 'protected_attributes'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 gem 'authlogic'
 # Use SCSS for stylesheets
+gem 'compass'
 gem 'sass-rails', '~> 4.0.0'
-
+gem 'zurb-foundation'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+
 gem "devise"
 gem "cancan"
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

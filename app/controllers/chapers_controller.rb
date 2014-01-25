@@ -1,5 +1,6 @@
 class ChapersController < ApplicationController
   before_action :set_chaper, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:edit, :update, :destroy]
   load_and_authorize_resource
   # GET /chapers
   # GET /chapers.json
@@ -25,7 +26,7 @@ class ChapersController < ApplicationController
   # POST /chapers.json
   def create
     @chaper = Chaper.new(chaper_params)
- 
+    @chaper.user_id = current_user.id 
     respond_to do |format|
       if @chaper.save
         format.html { redirect_to @chaper, notice: 'Chaper was successfully created.' }
@@ -65,6 +66,16 @@ class ChapersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_chaper
       @chaper = Chaper.find(params[:id])
+    end
+
+     def find_user
+      
+      if current_user.id != @chaper.user_id
+        respond_to do |format|
+        format.html { redirect_to @chaper, notice: 'ВЫ не имеее прав для выполнения этого действия' }
+        format.json { render action: 'show', status: :created, location: @chaper }
+      end
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
