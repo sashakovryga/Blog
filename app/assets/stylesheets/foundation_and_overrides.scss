@@ -52,7 +52,7 @@ $em-base: 16px !default;
 }
 
 // Maybe you want to create rems with pixels
-// $rem-base: 0.8 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 80%;}
+// $rem-base: 0.8 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 100%;max-width:80em;}
 // @function rem-calc($pxWidth) {
 //   @return $pxWidth / $rem-base * 1rem;
 // }

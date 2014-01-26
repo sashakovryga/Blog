@@ -1,0 +1,8 @@
+<div>
+<h1>Список всех публикаций</h1>
+<% @chapers.each do |chaper| %>
+<h3><a href="<%= chaper_path(chaper)%>"><%= chaper.title %></a></h3>
+<p><%=sanitize chaper.description %></p>
+<% end %>
+</div>
+

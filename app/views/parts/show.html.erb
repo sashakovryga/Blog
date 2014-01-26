@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>name:</strong>
+  <%= @part.name %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @part.body %>
+</p>
+
+<%= link_to 'Edit', edit_chaper_part_path(@part,  chaper_id: @chaper.id) %> 
+<%= link_to 'Back', chaper_parts_path %>

@@ -1,8 +1,10 @@
 Itransition::Application.routes.draw do
 
+  get "store/index"
   devise_for :users
-
-  resources :chapers
+  resources :chapers do
+    resources :parts
+  end  
 namespace :admin do
   get '/' => 'users#index'
   resources :users
@@ -11,7 +13,7 @@ end
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'chapers#index'
+  root 'store#index', as: 'store'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

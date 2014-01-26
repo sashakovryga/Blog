@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124155610) do
+ActiveRecord::Schema.define(version: 20140125150147) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -40,11 +40,12 @@ ActiveRecord::Schema.define(version: 20140124155610) do
   end
 
   create_table "parts", force: true do |t|
-    t.string   "title"
+    t.string   "name"
     t.text     "body"
     t.integer  "chaper_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "parts", ["chaper_id"], name: "index_parts_on_chaper_id", using: :btree

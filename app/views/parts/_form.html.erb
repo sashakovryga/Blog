@@ -1,0 +1,30 @@
+<%= form_for([@chaper,@part]) do |f| %>
+  <% if @part.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@part.errors.count, "error") %> prohibited this part from being saved:</h2>
+
+      <ul>
+      <% @part.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row collapse">
+  <div class="small-3 columns">
+    <%= f.label :name, class: "right inline" %>
+  </div>
+  <div class="small-9 columns"><%= f.text_field :name %></div>
+</div>
+<div class="row collapse">
+  <div class="small-3 columns">
+    <%= f.label :body, class: "right inline"%>
+  </div>
+  <div class="small-9 columns"><%= f.text_area :body %></div>
+</div>
+<div class="row collapse">
+  <div class="small-9 small-offset-3 columns"><%= f.submit %></div>
+</div>
+
+<% end %>
