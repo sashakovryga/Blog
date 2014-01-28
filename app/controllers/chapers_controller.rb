@@ -1,4 +1,5 @@
 class ChapersController < ApplicationController
+  layout "chaper", only: [:show, :edit, :update]
   before_action :set_chaper, only: [:show, :edit, :update, :destroy]
   before_action :find_user, only: [:edit, :update, :destroy]
   load_and_authorize_resource

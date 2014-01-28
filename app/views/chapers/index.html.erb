@@ -16,7 +16,7 @@
     <% @chapers.each do |chaper| %>
       <tr>
         <td><%= chaper.title %></td>
-        <td><%= chaper.description %></td>
+        <td><%= markdown(chaper.description) %></td>
         <td><%= link_to 'Show', chaper %></td>
        
         <td><%= link_to 'Edit', edit_chaper_path(chaper) %></td>

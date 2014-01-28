@@ -6,10 +6,12 @@ gem 'protected_attributes'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 gem 'authlogic'
+
 # Use SCSS for stylesheets
 gem 'compass'
 gem 'sass-rails', '~> 4.0.0'
-gem 'zurb-foundation'
+gem 'markitup-rails'
+gem 'foundation-rails', '~> 5.0.2.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -18,6 +20,9 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem "devise"
 gem "cancan"
+gem "redcarpet"
+
+gem 'simple_form'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

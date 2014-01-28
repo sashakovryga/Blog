@@ -16,7 +16,7 @@
     <% @parts.each do |part| %>
       <tr>
         <td><%= part.name %></td>
-        <td><%= part.body %></td>
+        <td><%= markdown(part.body) %></td>
         <td><%= link_to 'Show', chaper_part_path( id: part.id) %></td>
        
         <td><%= link_to 'Edit', edit_chaper_part_path(part,  chaper_id: @chaper.id) %> </td>

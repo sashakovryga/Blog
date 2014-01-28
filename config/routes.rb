@@ -2,13 +2,16 @@ Itransition::Application.routes.draw do
 
   get "store/index"
   devise_for :users
+  post "markdown/preview"
   resources :chapers do
+   
     resources :parts
   end  
 namespace :admin do
   get '/' => 'users#index'
   resources :users
 end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

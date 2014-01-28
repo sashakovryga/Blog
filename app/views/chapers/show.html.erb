@@ -7,7 +7,7 @@
  
 <p>
   <strong>Text:</strong>
-  <%= @chaper.description %>
+  <%= markdown(@chaper.description) %>
 </p>
  
 <h2>Parts</h2>
@@ -19,7 +19,7 @@
  
   <p>
     <strong>Text:</strong>
-    <%= part.body %>
+    <%= markdown(part.body) %>
   </p>
 <% end %>
  
