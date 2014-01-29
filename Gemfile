@@ -21,7 +21,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem "devise"
 gem "cancan"
 gem "redcarpet"
-
+gem 'rmagick', '2.13.2'
+gem "carrierwave"
 gem 'simple_form'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -30,7 +31,7 @@ gem 'simple_form'
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

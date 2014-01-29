@@ -1,5 +1,9 @@
 Itransition::Application.routes.draw do
 
+  resources :paintings
+
+  resources :galleries
+
   get "store/index"
   devise_for :users
   post "markdown/preview"
