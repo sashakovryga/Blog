@@ -1,8 +1,10 @@
 Itransition::Application.routes.draw do
 
-  resources :paintings
+  
 
-  resources :galleries
+  resources :galleries do
+    resources :paintings
+  end
 
   get "store/index"
   devise_for :users

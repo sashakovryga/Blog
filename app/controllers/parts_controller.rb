@@ -1,4 +1,5 @@
 class PartsController < ApplicationController
+  layout "chaper", only: [:show, :edit, :update]
 	   before_action :set_chaper
   before_action :set_part, only: [:show, :edit, :update, :destroy]
 
@@ -23,6 +24,7 @@ class PartsController < ApplicationController
   # GET /parts/1/edit
   def edit
   end
+
 
   # POST /parts
   # POST /parts.json

@@ -9,20 +9,19 @@
   <strong>Text:</strong>
   <%= markdown(@chaper.description) %>
 </p>
- 
-<h2>Parts</h2>
-<% @chaper.parts.each do |part| %>
+ <% if @chaper.parts.count > 0%>
   <p>
-    <strong>Name:</strong>
-    <%= part.name %>
+    <strong><%= @chaper.parts.first.name %></strong>
+    
   </p>
  
   <p>
     <strong>Text:</strong>
-    <%= markdown(part.body) %>
+    <%= markdown(@chaper.parts.first.body) %>
   </p>
-<% end %>
+<%end%>
  
+<% if user_signed_in? && ((current_user.role_ids == [1] ) || (current_user.id == @chaper.user_id))%>
 <h2>Add a part:</h2>
 <%= form_for([@chaper, @chaper.parts.build]) do |f| %>
   <p>
@@ -40,4 +39,5 @@
  
 
 <%= link_to 'Edit', edit_chaper_path(@chaper) %> |
-<%= link_to 'Back', chapers_path %>
+<% end %>
+<%= link_to 'Next Part', chaper_part_path(id: "#{@chaper.parts.ids[1]}", chaper_id:params[:id]) %>

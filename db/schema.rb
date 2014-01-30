@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128174300) do
+ActiveRecord::Schema.define(version: 20140130200309) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140128174300) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "photo"
+    t.integer  "gallery_id"
   end
 
   create_table "galleries", force: true do |t|
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 20140128174300) do
     t.datetime "updated_at"
     t.string   "user_name"
     t.boolean  "admin"
+    t.boolean  "block"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

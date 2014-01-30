@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
    before_save :setup_role
    has_many :chapers
-attr_accessible :email, :password, :password_confirmation, :user_name
+attr_accessible :email, :password, :password_confirmation, :user_name, :block
   def role?(role)
       return !!self.roles.find_by_name(role.to_s)
   end

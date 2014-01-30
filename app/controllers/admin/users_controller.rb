@@ -44,11 +44,11 @@ class Admin::UsersController < Admin::AdminController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        flash[:notice] = flash[:notice].to_a.concat @user.errors.full_messages
+        
         format.html { redirect_to admin_users_path, :notice => 'User was successfully created.' }
         format.json { render :json => @user, :status => :created, :location => @user }
       else
-        flash[:notice] = flash[:notice].to_a.concat @user.errors.full_messages
+
         format.html { render :action => "new"}
         format.json { render :json => @user.errors, :status => :unprocessable_entity }
       end
@@ -87,6 +87,6 @@ class Admin::UsersController < Admin::AdminController
     end
   end
   def user_params
-      params.require(:user).permit(:password, :password_confirmation, :email)
+      params.require(:user).permit(:password, :password_confirmation, :email, :block)
     end
 end

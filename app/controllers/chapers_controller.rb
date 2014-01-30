@@ -6,7 +6,7 @@ class ChapersController < ApplicationController
   # GET /chapers
   # GET /chapers.json
   def index
-    @chapers = Chaper.all
+    @chapers = current_user.role_ids == [1] ? Chaper.all : Chaper.find_all_by_user_id(current_user.id)
   end
 
   # GET /chapers/1
@@ -30,6 +30,7 @@ class ChapersController < ApplicationController
     @chaper.user_id = current_user.id 
     respond_to do |format|
       if @chaper.save
+        Gallery.create(chaper_id:@chaper.id,name:@chaper.title)
         format.html { redirect_to @chaper, notice: 'Chaper was successfully created.' }
         format.json { render action: 'show', status: :created, location: @chaper }
       else

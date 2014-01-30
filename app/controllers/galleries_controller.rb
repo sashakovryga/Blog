@@ -1,6 +1,7 @@
 class GalleriesController < ApplicationController
   before_action :set_gallery, only: [:show, :edit, :update, :destroy]
-
+before_action :find_user, only: [:edit, :update, :destroy]
+  load_and_authorize_resource
   # GET /galleries
   # GET /galleries.json
   def index
@@ -13,9 +14,7 @@ class GalleriesController < ApplicationController
   end
 
   # GET /galleries/new
-  def new
-    @gallery = Gallery.new
-  end
+ 
 
   # GET /galleries/1/edit
   def edit
@@ -23,16 +22,7 @@ class GalleriesController < ApplicationController
 
   # POST /galleries
   # POST /galleries.json
-  def create
-    @gallery = Gallery.new(gallery_params)
-
-   if @gallery.save
-      flash[:notice] = "Successfully created gallery."
-      redirect_to @gallery
-    else
-      render :action => 'new'
-    end
-  end
+ 
 
   # PATCH/PUT /galleries/1
   # PATCH/PUT /galleries/1.json
@@ -58,6 +48,16 @@ class GalleriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_gallery
       @gallery = Gallery.find(params[:id])
+    end
+
+def find_user
+      
+      if !user_signed_in? || ((current_user.role_ids != [1] ) && (current_user.id != @chaper.user_id))
+        respond_to do |format|
+        format.html { redirect_to @chaper, notice: 'ВЫ не имеее прав для выполнения этого действия' }
+        format.json { render action: 'show', status: :created, location: @chaper }
+      end
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
