@@ -58,6 +58,7 @@
     <div class="large-2 columns">
     <h2 class="subheader">Parts</h2>
     <ul class="side-nav">
+    <li><%= link_to "Go to gallery", gallery_path(id: @chaper.gallery_id)  %> </li> 
     <% @chaper.parts.each do |part| %>  
  
     <li><%= link_to "#{part.name}", chaper_part_path(id: "#{part.id}", chaper_id:@chaper.id)  %> </li> 

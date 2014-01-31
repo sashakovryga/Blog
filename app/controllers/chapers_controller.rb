@@ -30,7 +30,7 @@ class ChapersController < ApplicationController
     @chaper.user_id = current_user.id 
     respond_to do |format|
       if @chaper.save
-        Gallery.create(chaper_id:@chaper.id,name:@chaper.title)
+
         format.html { redirect_to @chaper, notice: 'Chaper was successfully created.' }
         format.json { render action: 'show', status: :created, location: @chaper }
       else
