@@ -60,7 +60,7 @@
     <ul class="side-nav">
     <% @chaper.parts.each do |part| %>  
  
-    <li><%= link_to "#{part.name}", chaper_part_path(id: "#{part.id}", chaper_id:params[:id])  %> </li> 
+    <li><%= link_to "#{part.name}", chaper_part_path(id: "#{part.id}", chaper_id:@chaper.id)  %> </li> 
     <% end %>
     </ul>
   </div>

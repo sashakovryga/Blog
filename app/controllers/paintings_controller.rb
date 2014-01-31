@@ -19,8 +19,14 @@ before_action :set_chaper
     @painting.gallery_id = @gallery.id 
    
        if @painting.save
+      
+        if params[:painting][:image].blank?
       flash[:notice] = "Successfully created painting."
       redirect_to gallery_path(@gallery)
+
+      else
+        render :action => "crop"
+    end
     else
       render :action => 'new'
     end
@@ -31,8 +37,13 @@ before_action :set_chaper
   # PATCH/PUT /paintings/1.json
   def update
     if @painting.update_attributes(params[:painting])
-      flash[:notice] = "Successfully updated painting."
+      if params[:painting][:image].blank?
+      flash[:notice] = "Successfully created painting."
       redirect_to gallery_path(@gallery)
+
+      else
+        render :action => "crop"
+    end
     else
       render :action => 'edit'
     end

@@ -38,6 +38,8 @@
 <% end %>
  
 
-<%= link_to 'Edit', edit_chaper_path(@chaper) %> |
+<%= link_to 'Edit', edit_chaper_path(@chaper) %> 
 <% end %>
+<% if @chaper.parts.count > 1 %>
 <%= link_to 'Next Part', chaper_part_path(id: "#{@chaper.parts.ids[1]}", chaper_id:params[:id]) %>
+<% end %>
