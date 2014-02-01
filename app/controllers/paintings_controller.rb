@@ -1,7 +1,8 @@
 class PaintingsController < ApplicationController
-  before_action :set_painting, only: [:show, :edit, :update, :destroy]
+  before_action :set_painting, only: [:show, :edit,:crop, :update, :destroy]
 before_action :set_chaper
-  before_action :find_user, only: [:edit, :update, :destroy]
+  before_action :find_user, only: [:edit,:crop, :update, :destroy]
+
   load_and_authorize_resource
   # GET /paintings/new
   def new
@@ -12,6 +13,13 @@ before_action :set_chaper
   def edit
   end
 
+  def crop
+  end
+
+  def crop_update
+  end
+
+
   # POST /paintings
   # POST /paintings.json
   def create
@@ -20,13 +28,10 @@ before_action :set_chaper
    
        if @painting.save
       
-        if params[:painting][:image].blank?
       flash[:notice] = "Successfully created painting."
       redirect_to gallery_path(@gallery)
-
-      else
-        render :action => "crop"
-    end
+     
+   
     else
       render :action => 'new'
     end
@@ -36,14 +41,16 @@ before_action :set_chaper
   # PATCH/PUT /paintings/1
   # PATCH/PUT /paintings/1.json
   def update
-    if @painting.update_attributes(params[:painting])
-      if params[:painting][:image].blank?
+    if @painting.update_attributes(painting_params)
+      
       flash[:notice] = "Successfully created painting."
+       if params[:painting][:photo].blank?
       redirect_to gallery_path(@gallery)
-
-      else
-        render :action => "crop"
+ else
+      render :action => 'crop'
     end
+
+   
     else
       render :action => 'edit'
     end
@@ -80,6 +87,6 @@ before_action :set_chaper
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def painting_params
-      params.require(:painting).permit(:name, :gallery_id, :image)
+      params.require(:painting).permit(:name, :gallery_id, :image, :photo, :crop_x, :crop_y, :crop_w, :crop_h  )
     end
 end

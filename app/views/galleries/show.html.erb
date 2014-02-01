@@ -1,9 +1,9 @@
 <% title @gallery.name %>
 
-<div id="paintings">
+<ul class="small-block-grid-3">
   <% for painting in @gallery.paintings %>
     <div class="painting">
-      <%= image_tag painting.image_url(:thumb).to_s%>
+      <%= image_tag painting.photo.url(:small)%>
       <div class="name"><%= painting.name %></div>
       <div class="actions">
         <%= link_to "edit", edit_gallery_painting_path(painting.id, gallery_id:@gallery.id) %> |
@@ -11,8 +11,7 @@
       </div>
     </div>
   <% end %>
-  <div class="clear"></div>
-</div>
+</ul>
 
 <p>
   <%= link_to "Add a Painting", new_gallery_painting_path(:gallery_id => @gallery) %> |

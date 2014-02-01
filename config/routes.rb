@@ -3,12 +3,13 @@ Itransition::Application.routes.draw do
   
 
   resources :galleries do
-    resources :paintings
+    resources :paintings 
   end
 
   get "store/index"
   devise_for :users
   post "markdown/preview"
+ 
   resources :chapers do
    
     resources :parts

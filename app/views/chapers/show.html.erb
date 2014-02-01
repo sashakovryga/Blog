@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
   <%= @chaper.title %>
 </p>
  
 <p>
-  <strong>Text:</strong>
+
   <%= markdown(@chaper.description) %>
 </p>
  <% if @chaper.parts.count > 0%>
@@ -16,30 +15,17 @@
   </p>
  
   <p>
-    <strong>Text:</strong>
+   
     <%= markdown(@chaper.parts.first.body) %>
   </p>
 <%end%>
  
 <% if user_signed_in? && ((current_user.role_ids == [1] ) || (current_user.id == @chaper.user_id))%>
-<h2>Add a part:</h2>
-<%= form_for([@chaper, @chaper.parts.build]) do |f| %>
-  <p>
-    <%= f.label :Name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= link_to 'New Part', new_chaper_part_path(@part,  chaper_id: @chaper.id), class: "button radius" %>
  
 
-<%= link_to 'Edit', edit_chaper_path(@chaper) %> 
+<%= link_to 'Edit', edit_chaper_path(@chaper) , class: "button radius"%> 
 <% end %>
 <% if @chaper.parts.count > 1 %>
-<%= link_to 'Next Part', chaper_part_path(id: "#{@chaper.parts.ids[1]}", chaper_id:params[:id]) %>
+<%= link_to 'Next Part', chaper_part_path(id: "#{@chaper.parts.ids[1]}", chaper_id:params[:id]), class: "button radius" %>
 <% end %>

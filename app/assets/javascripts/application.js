@@ -12,10 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require foundation
-
 //= require markitup
 //= require_tree .
+
+
 
 $(function(){ $(document).foundation(); });
 

@@ -5,14 +5,11 @@
 </p>
 
 
-<p>
-  <%= @part.id %>
-</p>
 
 <p>
   <%= markdown(@part.body) %>
 </p>
-<%= link_to 'Edit', edit_chaper_part_path(@part,  chaper_id: @chaper.id) %> 
+<%= link_to 'Edit', edit_chaper_part_path(@part,  chaper_id: @chaper.id), class: "button radius" %> 
 <% unless @part.id == @chaper.parts.ids.last%>
-<%= link_to 'Next Part', chaper_part_path(id: next_part(@part.id), chaper_id:@chaper.id) %>
+<%= link_to 'Next Part', chaper_part_path(id: next_part(@part.id), chaper_id:@chaper.id), class: "button radius" %>
 <% end %>
