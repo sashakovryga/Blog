@@ -1,0 +1,28 @@
+<% unless (@chapers.count == 0) && (@parts.count == 0)%>	
+	<h1><em>Результаты поиска:</em></h1>
+		<% if @chapers.count > 0 %>
+			<h3>Креативы:</h3>
+			<div class="row">
+			  <% @chapers.each do |chaper| %>
+			  <div class="panel callout radius small-4 columns" >
+					<h3><%= link_to "#{chaper.title}",chaper_path(chaper) %></h3>
+					<p class="blue"><%=sanitize chaper.description%></p>
+				</div>
+				<% end %>
+			</div>
+		<% end %>
+		<% if @parts.count > 0 %>
+			<h3>Главы:</h3>
+			<div class="row">
+			  <% @parts.each do |part| %>
+			  <div class="panel callout radius small-4 columns" >
+					<h3><%= link_to "#{part.name}", chaper_part_path(part.id, chaper_id:part.chaper_id)%></h3>
+					<p class="blue"><%=sanitize part.body %></p>
+				</div>
+				<% end %>
+			</div>
+		<% end %>
+<% else %>
+	<h3>Извините по вашему запросу ничего не найдено</h3>
+<% end %>
+

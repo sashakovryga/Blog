@@ -1,11 +1,10 @@
 
 <div>
 <h1><em>Список всех публикаций</em></h1>
-<div ></div>
 <div class="row">
   <% @chapers.each do |chaper| %>
   <div class="panel callout radius small-4 columns" >
-		<h3><a href="<%= chaper_path(chaper)%>"><%= chaper.title %></a></h3>
+		<h3><%= link_to "#{chaper.title}",chaper_path(chaper) %></h3>
 		<p class="blue"><%=sanitize chaper.description%></p>
 	</div>
 	<% end %>

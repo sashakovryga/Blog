@@ -31,6 +31,18 @@
 
   <section class="top-bar-section">
     <ul class="right">
+      <li class="has-form">
+        <div class="row collapse">
+          <%= form_tag store_search_path, :method => :get do %>
+          <div class="large-8 small-9 columns">
+            <%= text_field_tag :search, params[:search], placeholder: "Find Stuff" %>
+          </div>
+          <div class="large-4 small-3 columns">
+            <%= submit_tag "Search", :title => nil, class: "alert button expand" %>
+          </div>
+          <% end %>
+        </div>
+      </li>
       <li class="divider"></li>
       <li><%= link_to "Browse Products", chapers_path %></li>
       <li class="divider"></li>
@@ -61,7 +73,7 @@
     
     <% @chaper.parts.each do |part| %>  
  
-    <li><%= link_to "#{part.name}", chaper_part_path(id: "#{part.id}", chaper_id:@chaper.id)  %> </li> 
+    <li><%= link_to "#{part.name}", chaper_part_path(part.id, chaper_id:@chaper.id)  %> </li> 
     <% end %>
     <%= link_to "Go to gallery", gallery_path(id: @chaper.gallery_id), class: "button radius sm" %>  
     </ul>

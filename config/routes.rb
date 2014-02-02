@@ -7,6 +7,7 @@ Itransition::Application.routes.draw do
   end
 
   get "store/index"
+  get "store/search"
   devise_for :users
   post "markdown/preview"
  

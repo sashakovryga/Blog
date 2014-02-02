@@ -76,7 +76,6 @@ class PartsController < ApplicationController
 
     def set_part
        @part = @chaper.parts.find(params[:id])
-  
     end
 
 
