@@ -1,5 +1,8 @@
 class StoreController < ApplicationController
   def index
-  	@chapers = Chaper.order(:title)
+  	@search = Chaper.search do
+    	fulltext params[:search]
+  	end
+  	@chapers = @search.results
   end
 end

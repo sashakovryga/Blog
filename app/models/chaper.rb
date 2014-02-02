@@ -6,6 +6,11 @@ class Chaper < ActiveRecord::Base
   validates :title, presence: true
   after_create :create_gallery
 
+  searchable do
+  text :title, :boost => 5
+  text :description
+  end
+
   protected
   def create_gallery
   	gallery = Gallery.create(chaper_id:id,name:title)  	
