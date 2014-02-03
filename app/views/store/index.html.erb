@@ -1,11 +1,11 @@
 
 <div>
-<h1><em>Список всех публикаций</em></h1>
+<h1><center><em>Список всех публикаций</em></center></h1>
 <div class="row">
   <% @chapers.each do |chaper| %>
   <div class="panel callout radius small-6 columns " >
-		<h3><%= link_to "#{chaper.title}",chaper_path(chaper) %></h3>
-		<p class="blue"><%=sanitize chaper.description%></p>
+		<h3><center><%= link_to "#{chaper.title}",chaper_path(chaper) %></center></h3>
+		<p class="blue"><%=truncate(strip_tags(markdown(chaper.description)), length: 200) %></p>
 	</div>
 	<% end %>
 </div>

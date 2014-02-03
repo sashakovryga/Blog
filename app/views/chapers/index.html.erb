@@ -16,7 +16,7 @@
     <% @chapers.each do |chaper| %>
       <tr>
         <td><%= chaper.title %></td>
-        <td><%= markdown(chaper.description) %></td>
+        <td><%= truncate(strip_tags(markdown(chaper.description)), length: 200) %></td>
         <td><%= link_to 'Show', chaper %></td>
        
         <td><%= link_to 'Edit', edit_chaper_path(chaper) %></td>

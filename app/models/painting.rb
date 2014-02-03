@@ -2,7 +2,7 @@ require 'open-uri'
 class Painting < ActiveRecord::Base
 	 attr_accessible :gallery_id, :name, :photo, :photo_remote_url
   belongs_to :gallery
-  has_attached_file :photo, :styles => { :small => "150x150#", :large => "500x500>" }, :processors => [:cropper]
+  has_attached_file :photo, :styles => { :small => "300x300#", :large => "500x500>" }, :processors => [:cropper]
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h      
   after_update :reprocess_photo, :if => :cropping?
   validates :name, presence: true, uniqueness: true

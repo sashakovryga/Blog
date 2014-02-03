@@ -1,26 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h3><center>
   <%= @chaper.title %>
-</p>
+</center></h3>
  
 <p>
 
   <%= markdown(@chaper.description) %>
 </p>
-<div class="panel callout radius">
+
  <% if @chaper.parts.count > 0%>
-  <p>
-    <strong><%= @chaper.parts.first.name %></strong>
+ <div class="panel callout radius">
+  <h3>
+    <strong><center><%= @chaper.parts.first.name %></center></strong>
     
-  </p>
+  </h3>
  
   <p>
    
     <%= markdown(@chaper.parts.first.body) %>
   </p>
+  </div>
 <%end%>
-</div>
+
  
 
 
@@ -33,10 +35,10 @@
 <% if @chaper.parts.count > 1 %>
 <%= link_to 'Next Part', chaper_part_path(id: "#{@chaper.parts.ids[1]}", chaper_id:params[:id]), class: "button radius" %>
 <% end %>
-
+<% if user_signed_in? %>
  <h2>Comments</h2>
 <%= render @chaper.comments %>
  
 <h2>Add a comment:</h2>
 <%= render "comments/form" %>
- 
+<% end %>

@@ -77,7 +77,7 @@ before_action :set_chaper
 
     def find_user
       
-      if !user_signed_in? || ((current_user.role_ids != [1] ) && (current_user.id != @part.user_id))
+      if !user_signed_in? || ((current_user.role_ids != [1] ) && (current_user.id != @gallery.chaper.user_id))
         respond_to do |format|
         format.html { redirect_to chaper_part_path, notice: 'ВЫ не имеее прав для выполнения этого действия' }
         format.json { render action: 'show', status: :created, location: @part }

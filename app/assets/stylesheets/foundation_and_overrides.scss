@@ -541,22 +541,22 @@ $column-gutter: emCalc(60px);
 // $include-html-orbit-classes: $include-html-classes;
 
 // We use these to control the caption styles
-// $orbit-container-bg: none;
-// $orbit-caption-bg: rgba(51,51,51, 0.8);
-// $orbit-caption-font-color: #fff;
-// $orbit-caption-font-size: rem-calc(14);
-// $orbit-caption-position: "bottom"; // Supported values: "bottom", "under"
-// $orbit-caption-padding: rem-calc(10,14);
-// $orbit-caption-height: auto;
+ $orbit-container-bg: #d1f9fb;
+ $orbit-caption-bg: #d1f9fb;
+$orbit-caption-font-color: #1aadc3;
+ $orbit-caption-font-size: rem-calc(14);
+$orbit-caption-position: ""; // Supported values: "bottom", "under"
+ $orbit-caption-padding: rem-calc(10,14);
+$orbit-caption-height: auto;
 
 // We use these to control the left/right nav styles
 // $orbit-nav-bg: none;
 // $orbit-nav-bg-hover: rgba(0,0,0,0.3);
-// $orbit-nav-arrow-color: #fff;
-// $orbit-nav-arrow-color-hover: #fff;
+$orbit-nav-arrow-color: #1aadc3;
+$orbit-nav-arrow-color-hover: #1aadc3;
 
 // We use these to control the timer styles
-// $orbit-timer-bg: rgba(255,255,255,0.3);
+ $orbit-timer-bg: #1aadc3;
 // $orbit-timer-show-progress-bar: true;
 
 // We use these to control the bullet nav styles
@@ -566,7 +566,7 @@ $column-gutter: emCalc(60px);
 
 // We use these to controls the style of slide numbers
 // $orbit-slide-number-bg: rgba(0,0,0,0);
-// $orbit-slide-number-font-color: #fff;
+ $orbit-slide-number-font-color: #1aadc3;
 // $orbit-slide-number-padding: rem-calc(5);
 
 // Graceful Loading Wrapper and preloader

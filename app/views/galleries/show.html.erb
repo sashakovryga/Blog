@@ -1,24 +1,58 @@
 <% title @gallery.name %>
+<h3><%= @gallery.name %></h3>
+<% if @gallery.paintings.count > 0 %>
+  <ul class="example-orbit-content" data-orbit>
+    <% for painting in @gallery.paintings %>
+    <li data-orbit-slide="headline-1">
+      <div><center>
+        <h2><%= painting.name %></h2>
+        <% if painting.photo_file_name %>
+        <%= image_tag painting.photo.url(:small)%>
+        <% else %>
+        <%= image_tag painting.photo_remote_url %>
+        <% end %>
+      </center>  
+      </div>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+</br>
+</br>
 
-<ul class="small-block-grid-3">
+<div>
   <% for painting in @gallery.paintings %>
+  <div class="panel callout radius small-6 columns " >
     <div class="painting">
       <% if painting.photo_file_name %>
       <%= image_tag painting.photo.url(:small)%>
       <% else %>
-      <%= image_tag painting.photo_remote_url,  height: '150', width: '150' %>
+      <%= image_tag painting.photo_remote_url,  height: '300', width: '350' %>
       <% end %>
-      <div class="name"><%= painting.name %></div>
-      <div class="actions">
-        <%= link_to "edit", edit_gallery_painting_path(painting.id, gallery_id:@gallery.id) %> |
-        <%= link_to "remove", gallery_painting_path(painting.id, gallery_id:@gallery.id), :confirm => 'Are you sure?', :method => :delete %>
+      <div><center>
+        <div class="name"><%= painting.name %></div>
+        <div class="actions">
+          <%= link_to "edit", edit_gallery_painting_path(painting.id, gallery_id:@gallery.id) %> |
+          <%= link_to "remove", gallery_painting_path(painting.id, gallery_id:@gallery.id), :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      </center>
+        </div>
       </div>
     </div>
   <% end %>
-</ul>
-
-<p>
-  <%= link_to "Add a Painting", new_gallery_painting_path(:gallery_id => @gallery) %> |
-  <%= link_to "Remove Gallery", @gallery, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View Galleries", galleries_path %>
-</p>
+</div>
+<div class= "row">
+<center>
+<% if user_signed_in? %>
+  <div class=" small-4 columns ">
+    <%= link_to "Add a Painting", new_gallery_painting_path(:gallery_id => @gallery) ,class: "button radius"%> 
+  </div>
+  <div class=" small-4 columns ">  
+    <%= link_to "Remove Gallery", @gallery, :confirm => 'Are you sure?', :method => :delete ,class: "button radius"%>
+  </div>
+  <div class=" small-4 columns ">
+    <%= link_to "View Galleries", galleries_path, class: "button radius"%>
+  </div>
+<% end %>
+</center>
+</div>

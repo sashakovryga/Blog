@@ -4,9 +4,9 @@
 			<h3>Креативы:</h3>
 			<div class="row">
 			  <% @chapers.each do |chaper| %>
-			  <div class="panel callout radius small-4 columns" >
+			  <div class="panel callout radius small-6 columns" >
 					<h3><%= link_to "#{chaper.title}",chaper_path(chaper) %></h3>
-					<p class="blue"><%=sanitize chaper.description%></p>
+					<p class="blue"><%=truncate(strip_tags(markdown(chaper.description)), length: 200)%></p>
 				</div>
 				<% end %>
 			</div>
@@ -15,9 +15,9 @@
 			<h3>Главы:</h3>
 			<div class="row">
 			  <% @parts.each do |part| %>
-			  <div class="panel callout radius small-4 columns" >
+			  <div class="panel callout radius small-6 columns" >
 					<h3><%= link_to "#{part.name}", chaper_part_path(part.id, chaper_id:part.chaper_id)%></h3>
-					<p class="blue"><%=sanitize part.body %></p>
+					<p class="blue"><%=truncate(strip_tags(markdown(part.body)), length: 200) %></p>
 				</div>
 				<% end %>
 			</div>

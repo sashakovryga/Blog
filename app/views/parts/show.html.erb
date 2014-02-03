@@ -1,21 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class="panel callout radius">
+	<center><h3>
   <%= @part.name %>
-</p>
+</h3>
+</center>
 
 
 
 <p>
   <%= markdown(@part.body) %>
 </p>
-<%= link_to 'Edit', edit_chaper_part_path(@part,  chaper_id: @chaper.id), class: "button radius" %> 
+</div>
+<% unless @part.id == @chaper.parts.ids.first%>
+<%= link_to 'Last Part', chaper_part_path(id: last_part(@part.id), chaper_id:@chaper.id), class: "button radius" %>
+<% end %>
 <% unless @part.id == @chaper.parts.ids.last%>
 <%= link_to 'Next Part', chaper_part_path(id: next_part(@part.id), chaper_id:@chaper.id), class: "button radius" %>
 <% end %>
 
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_chaper_part_path(@part,  chaper_id: @chaper.id), class: "button radius" %> 
 <h2>Comments</h2>
 <%= render @chaper.comments %>
  
 <h2>Add a comment:</h2>
 <%= render "comments/form" %>
+<% end %>
