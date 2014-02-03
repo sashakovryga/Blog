@@ -12,7 +12,7 @@ Itransition::Application.routes.draw do
   post "markdown/preview"
  
   resources :chapers do
-   
+    resources :comments
     resources :parts
   end  
 namespace :admin do

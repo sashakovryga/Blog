@@ -29,10 +29,7 @@ jQuery ->
       {name:'Numeric List', openWith: (markItUp) -> markItUp.line+'. ' }
       {name:'List',openWith:'- ' }
       {separator:'---------------' }
-      {
-        name:'Picture', key:'P',
-        replaceWith:'![[![Alternative text]!]]([![Url:!:http://]!] "[![Title]!]")'
-      },
+      {name:'Picture', key:'P',replaceWith:'![[![Alternative text]!]]([![Url:!:http://]!] "[![Title]!]")'},
       {
         name:'Link', key:'L', openWith:'[',
         closeWith:']([![Url:!:http://]!] "[![Title]!]")',

@@ -87,6 +87,6 @@ before_action :set_chaper
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def painting_params
-      params.require(:painting).permit(:name, :gallery_id, :image, :photo, :crop_x, :crop_y, :crop_w, :crop_h  )
+      params.require(:painting).permit(:name, :gallery_id, :photo, :photo_remote_url )
     end
 end

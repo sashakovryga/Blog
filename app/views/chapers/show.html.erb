@@ -20,6 +20,13 @@
   </p>
 <%end%>
  
+ <h2>Comments</h2>
+<%= render @chaper.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+ 
+
 <% if user_signed_in? && ((current_user.role_ids == [1] ) || (current_user.id == @chaper.user_id))%>
 <%= link_to 'New Part', new_chaper_part_path(@part,  chaper_id: @chaper.id), class: "button radius" %>
  

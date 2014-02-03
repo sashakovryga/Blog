@@ -3,7 +3,11 @@
 <ul class="small-block-grid-3">
   <% for painting in @gallery.paintings %>
     <div class="painting">
+      <% if painting.photo_file_name %>
       <%= image_tag painting.photo.url(:small)%>
+      <% else %>
+      <%= image_tag painting.photo_remote_url,  height: '150', width: '150' %>
+      <% end %>
       <div class="name"><%= painting.name %></div>
       <div class="actions">
         <%= link_to "edit", edit_gallery_painting_path(painting.id, gallery_id:@gallery.id) %> |

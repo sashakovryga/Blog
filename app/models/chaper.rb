@@ -5,7 +5,7 @@ class Chaper < ActiveRecord::Base
 	 has_many :parts, dependent: :destroy
   validates :title, presence: true
   after_create :create_gallery
-
+  has_many :comments, dependent: :destroy
   searchable do
   text :title, :boost => 5
   text :description

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131144925) do
+ActiveRecord::Schema.define(version: 20140203081044) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20140131144925) do
     t.integer  "gallery_id"
   end
 
+  create_table "comments", force: true do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "chaper_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["chaper_id"], name: "index_comments_on_chaper_id", using: :btree
+
   create_table "galleries", force: true do |t|
     t.string   "name"
     t.integer  "chaper_id"
@@ -51,13 +61,13 @@ ActiveRecord::Schema.define(version: 20140131144925) do
   create_table "paintings", force: true do |t|
     t.string   "name"
     t.integer  "gallery_id"
-    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "photo_remote_url"
   end
 
   create_table "parts", force: true do |t|
