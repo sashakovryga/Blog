@@ -1,0 +1,12 @@
+
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+<%= link_to 'Destroy', chaper_comment_path(id: comment.id, chaper_id: comment.chaper_id), method: :delete, data: { confirm: 'Are you sure?' } %>
