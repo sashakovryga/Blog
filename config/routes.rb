@@ -5,8 +5,9 @@ Itransition::Application.routes.draw do
   resources :galleries do
     resources :paintings 
   end
-
+  
   get "store/index"
+  get "store/about"
   get "store/search"
   devise_for :users
   post "markdown/preview"

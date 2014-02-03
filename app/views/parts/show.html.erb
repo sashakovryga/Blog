@@ -13,3 +13,9 @@
 <% unless @part.id == @chaper.parts.ids.last%>
 <%= link_to 'Next Part', chaper_part_path(id: next_part(@part.id), chaper_id:@chaper.id), class: "button radius" %>
 <% end %>
+
+<h2>Comments</h2>
+<%= render @chaper.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>

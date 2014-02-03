@@ -2,10 +2,12 @@ class ChapersController < ApplicationController
   layout "chaper", only: [:show, :edit, :update]
   before_action :set_chaper, only: [:show, :edit, :update, :destroy]
   before_action :find_user, only: [:edit, :update, :destroy]
+  skip_before_filter :authorize, only: [:edit, :update, :destroy, :index, :new, :create]
   load_and_authorize_resource
   # GET /chapers
   # GET /chapers.json
   def index
+
     @chapers = current_user.role_ids == [1] ? Chaper.all : Chaper.find_all_by_user_id(current_user.id)
   end
 

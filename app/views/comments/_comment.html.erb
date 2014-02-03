@@ -1,12 +1,11 @@
 
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
+  <div>
+    <h6><strong><%= comment.commenter %></strong></h6>says:    
+  </div>
  
   <p>
-    <strong>Comment:</strong>
     <%= comment.body %>
   </p>
-
+<% if (comment.user_id == current_user.id) || (current_user.role_ids == [1]) || (current_user.id == @chaper.user_id) %>
 <%= link_to 'Destroy', chaper_comment_path(id: comment.id, chaper_id: comment.chaper_id), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

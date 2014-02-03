@@ -4,22 +4,27 @@ class CommentsController < ApplicationController
 	  load_and_authorize_resource
 	 def create
     @comment = @chaper.comments.create(params[:comment])
-    @comment.commenter = @user.user_name
+    @comment.commenter = current_user.email
+    @comment.user_id = current_user.id
     redirect_to chaper_path(@chaper) if @comment.save
   end
 
   def destroy
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to chaper_path(@chaper) }
-      format.json { head :no_content }
-    end
+  	if @comment.user_id == current_user.id
+	    @comment.destroy
+	    respond_to do |format|
+	      format.html { redirect_to chaper_path(@chaper) }
+	      format.json { head :no_content }
+	    end
+	  else
+	  	 redirect_to chaper_path(@chaper)
+	  end
   end
 
   private
   	def set_chaper
        @chaper = Chaper.find(params[:chaper_id])
-       @user = User.find(@chaper.user_id)
+
     end
 
     def set_comment

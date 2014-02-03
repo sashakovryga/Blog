@@ -14,4 +14,8 @@ class StoreController < ApplicationController
   	@parts = @search_part.results
   end
 
+  def about
+    
+  end
+
 end

@@ -5,7 +5,7 @@ before_action :find_user, only: [:edit, :update, :destroy]
   # GET /galleries
   # GET /galleries.json
   def index
-    @galleries = Gallery.all
+    @galleries = current_user.role_ids == [1] ? Gallery.all : Chaper.galleries.find_all_by_user_id(current_user.id)
   end
 
   # GET /galleries/1

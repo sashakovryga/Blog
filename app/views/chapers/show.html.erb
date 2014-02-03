@@ -8,6 +8,7 @@
 
   <%= markdown(@chaper.description) %>
 </p>
+<div class="panel callout radius">
  <% if @chaper.parts.count > 0%>
   <p>
     <strong><%= @chaper.parts.first.name %></strong>
@@ -19,13 +20,9 @@
     <%= markdown(@chaper.parts.first.body) %>
   </p>
 <%end%>
+</div>
  
- <h2>Comments</h2>
-<%= render @chaper.comments %>
- 
-<h2>Add a comment:</h2>
-<%= render "comments/form" %>
- 
+
 
 <% if user_signed_in? && ((current_user.role_ids == [1] ) || (current_user.id == @chaper.user_id))%>
 <%= link_to 'New Part', new_chaper_part_path(@part,  chaper_id: @chaper.id), class: "button radius" %>
@@ -36,3 +33,10 @@
 <% if @chaper.parts.count > 1 %>
 <%= link_to 'Next Part', chaper_part_path(id: "#{@chaper.parts.ids[1]}", chaper_id:params[:id]), class: "button radius" %>
 <% end %>
+
+ <h2>Comments</h2>
+<%= render @chaper.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+ 
