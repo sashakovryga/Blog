@@ -74,7 +74,7 @@ class ChapersController < ApplicationController
 
      def find_user
       
-      if !user_signed_in? || ((current_user.role_ids != [1] ) && (current_user.id != @chaper.user_id))
+      if !user_signed_in? || ((!current_user.admin?) && (current_user.id != @chaper.user_id))
         respond_to do |format|
         format.html { redirect_to @chaper, notice: 'ВЫ не имеее прав для выполнения этого действия' }
         format.json { render action: 'show', status: :created, location: @chaper }

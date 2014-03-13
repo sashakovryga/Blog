@@ -20,21 +20,25 @@
 </br>
 </br>
 
-<div>
+<div class = "row">
   <% for painting in @gallery.paintings %>
-  <div class="panel callout radius small-6 columns " >
+  <div class="panel callout radius small-block-grid columns " >
     <div class="painting">
+      <center>
       <% if painting.photo_file_name %>
       <%= image_tag painting.photo.url(:small)%>
       <% else %>
       <%= image_tag painting.photo_remote_url,  height: '300', width: '350' %>
       <% end %>
+    </center>
       <div><center>
-        <div class="name"><%= painting.name %></div>
-        <div class="actions">
-          <%= link_to "edit", edit_gallery_painting_path(painting.id, gallery_id:@gallery.id) %> |
-          <%= link_to "remove", gallery_painting_path(painting.id, gallery_id:@gallery.id), :confirm => 'Are you sure?', :method => :delete %>
-        </div>
+        <% if user_signed_in? && ((current_user.role_ids == [1] ) || (current_user.id == @gallery.chaper.user_id))%>
+          <div class="name"><%= painting.name %></div>
+          <div class="actions">
+            <%= link_to "edit", edit_gallery_painting_path(painting.id, gallery_id:@gallery.id) %> |
+            <%= link_to "remove", gallery_painting_path(painting.id, gallery_id:@gallery.id), :confirm => 'Are you sure?', :method => :delete %>
+          </div>
+        <% end %>
       </center>
         </div>
       </div>
@@ -43,7 +47,7 @@
 </div>
 <div class= "row">
 <center>
-<% if user_signed_in? %>
+<% if user_signed_in? && ((current_user.role_ids == [1] ) || (current_user.id == @gallery.chaper.user_id))%>
   <div class=" small-4 columns ">
     <%= link_to "Add a Painting", new_gallery_painting_path(:gallery_id => @gallery) ,class: "button radius"%> 
   </div>

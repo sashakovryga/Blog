@@ -1,7 +1,7 @@
 class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit,:crop, :update, :destroy]
 before_action :set_chaper
-  before_action :find_user, only: [:edit,:crop, :update, :destroy]
+  before_action :find_user
 
   load_and_authorize_resource
   # GET /paintings/new
@@ -79,7 +79,7 @@ before_action :set_chaper
       
       if !user_signed_in? || ((current_user.role_ids != [1] ) && (current_user.id != @gallery.chaper.user_id))
         respond_to do |format|
-        format.html { redirect_to chaper_part_path, notice: 'ВЫ не имеее прав для выполнения этого действия' }
+        format.html { redirect_to gallery_path(@gallery), notice: 'ВЫ не имеее прав для выполнения этого действия' }
         format.json { render action: 'show', status: :created, location: @part }
       end
     end

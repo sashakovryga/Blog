@@ -19,5 +19,8 @@ attr_accessible :email, :password, :password_confirmation, :user_name, :block
     end
   end
 
-
+  def admin?
+    self.role_ids.include?(1)
+  end
 end
+#a.kazeko@itransition.com
